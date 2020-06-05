@@ -5,7 +5,7 @@ Description:    BusinessPress テーマをベースとしてPrivate Podcastを�
 Author:         toiee Lab
 Author URI:     https://toiee.jp/
 Template:       businesspress
-Version:        0.2.1
+Version:        0.2.2
 */
 
 .page-title-series {
@@ -50,9 +50,16 @@ Version:        0.2.1
 	display: inline;
 }
 
+.subscribe {
+	margin-top: 1.5em;
+	text-align: center;
+}
 .subscribe button {
 	background-color: white;
 	color: black;
 	border: solid 1px;
-	font-size: smaller;
+	font-size: 11px;
+}
+.subscribe input {
+	font-size:11px;
 }

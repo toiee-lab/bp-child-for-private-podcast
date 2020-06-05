@@ -67,7 +67,7 @@ get_header();
 						document.execCommand("copy");
 
 						/* Alert the copied text */
-						alert("コピーしました " + copyText.value);
+						alert("コピーしました");
 					}
 				</script>
 			</div>

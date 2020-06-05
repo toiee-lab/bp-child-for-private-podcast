@@ -111,3 +111,15 @@ function bpcast_player( $content ) {
 	return $content;
 }
 add_action( 'the_content', 'bpcast_player' );
+
+
+function bpcast_disable_thumbnail( $has_thumbnail, $post, $thumbnail_id ) {
+	if ( ! is_admin() && is_main_query() ) {
+		if ( 'podcast' === get_post_type( $post ) ) {
+			return false;
+		}
+	}
+
+	return $has_thumbnail;
+}
+add_filter( 'has_post_thumbnail', 'bpcast_disable_thumbnail', 10, 3 );
