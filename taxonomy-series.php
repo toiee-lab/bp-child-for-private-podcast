@@ -81,6 +81,7 @@ get_header();
 					'post_type'   => 'podcast',
 					'post_status' => 'draft',
 					'tax_input'   => array( 'series' => $series_id ),
+					'post_title'         => date( 'Y-m-d' ) . ' 新規エピソード',
 				),
 				'submit_value'       => 'エピソードを追加する',
 				'return'             => admin_url( '/post.php?post=%post_id%&action=edit' ),
