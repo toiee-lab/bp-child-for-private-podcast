@@ -112,6 +112,18 @@ function bpcast_register_required_plugins() {
 			'required'  => false,
 		),
 
+		array(
+			'name'      => 'WP Approve User',
+			'slug'      => 'wp-approve-user',
+			'required'  => false,
+		),
+
+		array(
+			'name'      => 'WP User Avatar',
+			'slug'      => 'wp-user-avatar',
+			'required'  => false,
+		),
+
 		// This is an example of the use of 'is_callable' functionality. A user could - for instance -
 		// have WPSEO installed *or* WPSEO Premium. The slug would in that last case be different, i.e.
 		// 'wordpress-seo-premium'.
