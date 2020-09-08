@@ -73,22 +73,24 @@ get_header();
 			</div>
 		</header><!-- .page-header -->
 		<div class="loop-wrapper loop-wrapper-podcast">
+			<?php if ( $can_edit ) : ?>
 			<div class="series-buttons">
-			<?php
-			$setting = array(
-				'post_id'            => 'new_post',
-				'new_post'           => array(
-					'post_type'   => 'podcast',
-					'post_status' => 'draft',
-					'tax_input'   => array( 'series' => $series_id ),
-					'post_title'         => date( 'Y-m-d' ) . ' 新規エピソード',
-				),
-				'submit_value'       => 'エピソードを追加する',
-				'return'             => admin_url( '/post.php?post=%post_id%&action=edit' ),
-			);
-			acf_form( $setting );
-			?>
+				<?php
+				$setting = array(
+					'post_id'            => 'new_post',
+					'new_post'           => array(
+						'post_type'   => 'podcast',
+						'post_status' => 'draft',
+						'tax_input'   => array( 'series' => $series_id ),
+						'post_title'         => date( 'Y-m-d' ) . ' 新規エピソード',
+					),
+					'submit_value'       => 'エピソードを追加する',
+					'return'             => admin_url( '/post.php?post=%post_id%&action=edit' ),
+				);
+				acf_form( $setting );
+				?>
 			</div>
+			<?php endif; ?>
 		<?php /* Start the Loop */ ?>
 		<?php while ( have_posts() ) : the_post();
 			get_template_part( 'template-parts/content', get_theme_mod( 'businesspress_content_archive' ) );

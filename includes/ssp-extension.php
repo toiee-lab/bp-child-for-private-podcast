@@ -105,3 +105,27 @@ function bpcast_add_detail_url( $term ) {
 	<?php
 }
 add_action( 'series_edit_form_fields', 'bpcast_add_detail_url' );
+
+
+function bpcast_change_order( $query ) {
+
+	if ( is_admin() || ! $query->is_main_query() ) {
+		return null;
+	}
+
+	if ( is_tax( 'series' ) ) {
+		$tax = $query->queried_object;
+		if ( null === $tax ) {
+			return null;
+		}
+
+		$series_id   = $tax->term_id;
+		$itunes_type = get_option( 'ss_podcasting_consume_order' . ( $series_id > 0 ? '_' . $series_id : null ) );
+
+		if ( 'serial' === $itunes_type ) {
+			$query->set( 'order', 'ASC' );
+		}
+		return;
+	}
+}
+add_action( 'pre_get_posts', 'bpcast_change_order' );
