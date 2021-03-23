@@ -119,7 +119,11 @@ function bpcast_get_user_token( $user_id = '' ) {
 function bpcast_ssp_feed_access( $give_access, $series_id ){
 	global $bpcast_series_access;
 
-	preg_match( '|/bpcast_token/([^/]+)/?|', $_SERVER['REQUEST_URI'], $matches );
+	$ret = preg_match( '|/bpcast_token/([^/]+)/?|', $_SERVER['REQUEST_URI'], $matches );
+	if ( 0 === $ret || false === $ret ) {
+		$bpcast_series_access = false;
+		return $give_access;
+	}
 	$token = $matches[1];
 
 	$user_query = get_users(
